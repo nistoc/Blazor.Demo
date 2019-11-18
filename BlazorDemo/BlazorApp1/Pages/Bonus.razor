@@ -1,4 +1,16 @@
 ﻿@page "/bonus"
+@using BlazorApp1.Data
 
 <h3>Bonus splitter</h3>
 
+@code {
+    decimal totalBudget = 1000000;
+
+    List<BudgetItem> budgetItems = new List<BudgetItem>
+        {
+        new BudgetItem{Name = "Developers"},
+        new BudgetItem{Name = "AMangers"},
+        new BudgetItem{Name = "Sales"}
+        };
+
+}
