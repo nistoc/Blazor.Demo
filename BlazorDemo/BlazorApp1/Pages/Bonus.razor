@@ -3,14 +3,16 @@
 
 <h3>Bonus splitter</h3>
 
-<div class="table">
+<ul class="my-table">
     @foreach (var item in budgetItems)
     {
-        <span>@item.Name</span>
-        <span>@item.Amount.ToString("C0")</span>
-        <span>TODO: editor</span>
+        <li>
+            <span>@item.Name</span>
+            <span>@item.Amount.ToString("C0")</span>
+            <input type="range" max="@totalBudget" step="1000" @bind="@item.Amount" />
+        </li>
     }
-</div>
+</ul>
 
 @code {
     decimal totalBudget = 1000000;
@@ -24,11 +26,11 @@
 
 }
 
-<br/>
-<br/>
-<br/>
-<br/>
-<hr/>
+<br />
+<br />
+<br />
+<br />
+<hr />
 <h6>тест для отображения второго фрагмента кода</h6>
 <div class="alert-dark">@totalBudget1</div>
 <div class="alert-info">@totalBudget2</div>
