@@ -3,14 +3,43 @@
 
 <h3>Bonus splitter</h3>
 
+<div class="table">
+    @foreach (var item in budgetItems)
+    {
+        <span>@item.Name</span>
+        <span>@item.Amount.ToString("C0")</span>
+        <span>TODO: editor</span>
+    }
+</div>
+
 @code {
     decimal totalBudget = 1000000;
 
     List<BudgetItem> budgetItems = new List<BudgetItem>
-        {
+{
         new BudgetItem{Name = "Developers"},
         new BudgetItem{Name = "AMangers"},
         new BudgetItem{Name = "Sales"}
         };
+
+}
+
+<br/>
+<br/>
+<br/>
+<br/>
+<hr/>
+<h6>тест для отображения второго фрагмента кода</h6>
+<div class="alert-dark">@totalBudget1</div>
+<div class="alert-info">@totalBudget2</div>
+
+@code{
+    decimal totalBudget1 = 1000002;
+    decimal totalBudget2;
+
+    public Bonus()
+    {
+        totalBudget2 = budgetItems.Sum(c => c.Amount);
+    }
 
 }
