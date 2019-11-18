@@ -6,10 +6,12 @@
 <ul class="my-table">
     @foreach (var item in budgetItems)
     {
-        <li>
+        <li style="display: flex">
             <span>@item.Name</span>
             <span>@item.Amount.ToString("C0")</span>
-            <input type="range" max="@(item.Amount + Remaining)" step="1000" @bind="@item.Amount" @bind:event="oninput"/>
+            <input type="range" max="@(item.Amount + Remaining)" step="1000" @bind="@item.Amount" @bind:event="oninput"
+                   style="width: @(100 * (item.Amount + Remaining) / totalBudget)%"
+                   />
         </li>
     }
 
@@ -17,6 +19,8 @@
         <span>Remaining: </span>
         <span>@Remaining.ToString("c0") </span>
     </div>
+
+    <button disabled="@(Remaining > 0)">Save</button>
 </ul>
 
 @code {
