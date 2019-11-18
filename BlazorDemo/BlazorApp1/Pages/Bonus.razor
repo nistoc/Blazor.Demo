@@ -9,9 +9,14 @@
         <li>
             <span>@item.Name</span>
             <span>@item.Amount.ToString("C0")</span>
-            <input type="range" max="@totalBudget" step="1000" @bind="@item.Amount" />
+            <input type="range" max="@(item.Amount + Remaining)" step="1000" @bind="@item.Amount" @bind:event="oninput"/>
         </li>
     }
+
+    <div>
+        <span>Remaining: </span>
+        <span>@Remaining.ToString("c0") </span>
+    </div>
 </ul>
 
 @code {
@@ -26,22 +31,9 @@
 
 }
 
-<br />
-<br />
-<br />
-<br />
-<hr />
-<h6>тест для отображения второго фрагмента кода</h6>
-<div class="alert-dark">@totalBudget1</div>
-<div class="alert-info">@totalBudget2</div>
 
 @code{
-    decimal totalBudget1 = 1000002;
-    decimal totalBudget2;
 
-    public Bonus()
-    {
-        totalBudget2 = budgetItems.Sum(c => c.Amount);
-    }
+    decimal Remaining => totalBudget - budgetItems.Sum(c => c.Amount);
 
 }
